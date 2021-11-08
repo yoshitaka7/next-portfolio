@@ -3,7 +3,7 @@ module.exports = {
   webpack: function (config) {
     config.module.rules.push({
       test:/\.md$/,
-      use:"rawloader",
+      use:"raw-loader",
     })
     return config
   },
