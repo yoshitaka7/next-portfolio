@@ -30,23 +30,22 @@ const SingleBlog = ({ frontmatter, markdownBody, prev, next }) => {
 
 export default SingleBlog
 
-export async function getStaticPaths() {
-  const { orderedBlogs } = await getAllBlogs()
-  const paths = orderedBlogs.map((orderedBlog) => `/blog/${orderedBlog.slug}`)
+export async function getStaticPaths() {  //slug生成、登録
+  const { orderedBlogs } = await getAllBlogs()  //全ブログデータ
+  const paths = orderedBlogs.map((orderedBlog) => `/blog/${orderedBlog.slug}`)  //すべてのブログの個別URL
 
   return {
-    paths: paths,
-    fallback: false,
+    paths: paths,  //配列の形でないとだめ
+    fallback: false, //paths内にあるslug以外は404を返す
   }
 }
 
 export async function getStaticProps(context) {
-  const { singleDocument } = await getSingleBlog(context)
+  const { singleDocument } = await getSingleBlog(context)  //front matter部分を変換したデータ
+  const { orderedBlogs } = await getAllBlogs()  //全ブログデータ
 
-  const { orderedBlogs } = await getAllBlogs()
-
-  const prev = orderedBlogs.filter(orderedBlog => orderedBlog.frontmatter.id === singleDocument.data.id - 1)
-  const next = orderedBlogs.filter(orderedBlog => orderedBlog.frontmatter.id === singleDocument.data.id + 1)
+  const prev = orderedBlogs.filter(orderedBlog => orderedBlog.frontmatter.id === singleDocument.data.id - 1)  //全ブログデータから前の記事データを抽出
+  const next = orderedBlogs.filter(orderedBlog => orderedBlog.frontmatter.id === singleDocument.data.id + 1)  //全ブログデータから次の記事データを抽出
 
 
   return {

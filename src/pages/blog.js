@@ -41,8 +41,8 @@ const Blog = ({ blogs, numberPages }) => {
 export default Blog
 
 export async function getStaticProps() {
-  const { orderedBlogs, numberPages } = await getAllBlogs()
-  const limitedBlogs = orderedBlogs.slice(0, blogsPerPage)
+  const { orderedBlogs, numberPages } = await getAllBlogs() //並び替え後のブログデータとページの総数
+  const limitedBlogs = orderedBlogs.slice(0, blogsPerPage)  //1ページあたりに表示するブログデータ
 
   return {
     props: {

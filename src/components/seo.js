@@ -1,8 +1,8 @@
 import { useRouter } from 'next/router'
-import { Helmet } from "react-helmet"
+import { Helmet } from "react-helmet"  //headタグの中身を変えてくれる
 
 const SEO = ({ title, description }) => {
-    const router = useRouter()
+    const router = useRouter()  //現在いるURLなどが入ったオブジェクト
     const baseUrl = "https://next-portfolio-gold-xi.vercel.app/"
     const currentUrl = baseUrl + router.pathname
     const defaultImage = `${baseUrl}/images/social-card.png`

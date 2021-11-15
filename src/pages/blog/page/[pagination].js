@@ -39,11 +39,11 @@ const PaginationPage = ({ blogs, numberPages }) => {
 
 export default PaginationPage
 
-export async function getStaticPaths() {
-    const { numberPages } = await getAllBlogs()
+export async function getStaticPaths() {  //slug生成、登録
+    const { numberPages } = await getAllBlogs()  //ページ総数取得
 
     let paths = []
-    Array.from({ length: numberPages }).slice(0, 1).forEach((_, i) => paths.push(`/blog/page/${i + 2}`))
+    Array.from({ length: numberPages }).slice(0, 1).forEach((_, i) => paths.push(`/blog/page/${i + 2}`))  //ページに応じたURL
 
     return {
         paths: paths,
@@ -54,8 +54,8 @@ export async function getStaticPaths() {
 export async function getStaticProps(context) {
     const { orderedBlogs, numberPages } = await getAllBlogs()
 
-    const currentPage = context.params.pagination
-    const limitedBlogs = orderedBlogs.slice((currentPage -1) * blogsPerPage, currentPage * blogsPerPage)
+    const currentPage = context.params.pagination  //現在いるページ数
+    const limitedBlogs = orderedBlogs.slice((currentPage -1) * blogsPerPage, currentPage * blogsPerPage)  //現在いるページに表示するブログデータ
 
     return {
         props: {

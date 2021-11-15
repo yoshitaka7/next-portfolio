@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import Image from 'next/image'
+import Image from 'next/image'  //画像のリサイズ・最適化など自動で行ってくれる
 import * as style from "../styles/common.module.scss"
 
 const Header = () => {
@@ -9,7 +9,7 @@ const Header = () => {
         <div className={style.flexContainer}>
           <Link href="/">
             <a>
-              <Image src="/images/logo.png" alt="logo" width={50} height={50} />
+              <Image src="/images/logo.png" alt="logo" width={50} height={50} />{/*widthとheightに指定は必須*/}
             </a>
           </Link>
           <ul>
