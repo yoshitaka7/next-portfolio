@@ -1,10 +1,10 @@
-## Nextを使用したシンプルなブログアプリ
+# Nextを使用したシンプルなブログアプリ
 
-### ref
+## ref
  [https://github.com/mod728/next-book-portfolio-site](https://github.com/mod728/next-book-portfolio-site)
 
 
-### Getting Started
+## Getting Started
 `git clone`
 
 ↓
