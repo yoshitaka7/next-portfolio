@@ -41,6 +41,7 @@ export async function getStaticPaths() {  //slug生成、登録
 }
 
 export async function getStaticProps(context) {
+  console.log(context)
   const { singleDocument } = await getSingleBlog(context)  //front matter部分を変換したデータ
   const { orderedBlogs } = await getAllBlogs()  //全ブログデータ
 
